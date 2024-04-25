@@ -64,7 +64,6 @@ pub fn main() anyerror!void {
     // 文字列は自動的にヌルターミネート（終端に0）
     // Zigで文字列の長さ測る場合、途中にヌルがあっても止まらない
     // Zigで文字列の長さ測る場合、最後のヌルは数えない
-    // Zigで出力する場合、0（ヌル文字）は無視される
     // @TypeOfで型取得
     // @sizeOfは型を受け取り、大きさ返す
     // @sizeOfに文字列渡すと、終端ヌル文字も数えてくれる
@@ -79,9 +78,14 @@ pub fn main() anyerror!void {
     // Zig は、ヌル終端文字を上書きする代入を無視する
     // Zigでの文字列リテラルはヌルターミネートされる
     // Zig的には、[]const u8 や []u8だったら文字列扱い（ヌルターミネートされている必要性はない）
+    // 文字列リテラルが[]const u8になるってだけ
     // スライスには、[0..]か&
     // u8はconstだとcomptime_intになる→char型としても扱える
-    // 文字列リテラル、comptime変数、トップレベルvar、構造体レベルvar、およびconst宣言は、グローバル定数データセクションに格納
+    // 文字列リテラル
+    // comptime変数
+    // トップレベルvar
+    // 構造体レベルvar、
+    // const宣言は、グローバル定数データセクションに格納
     // 関数レベルのvar変数は関数のスタックフレームに格納, 関数が戻ると、関数のスタックフレーム内の変数へのポインタは無効
     // libcとリンクしているときは、std.heap.c_allocator
     // std.heap.GeneralPurposeAllocator。このアロケーターはメモリ リークを検出する機能を提供しますが、自動的に何も解放しません。
@@ -90,7 +94,7 @@ pub fn main() anyerror!void {
     // 関数に型を渡すことでジェネリクスを実現
     // 関数の引数にcomptimeを指定して、コンパイル時にチェックできるようにする（いいね）
     //      fn discount(price: f32, comptime percent: f32) f32 {
-    //      if (percent > 100) @compileError("Are you nut?");
-    //          return price - (price * percent / 100);
+    //           if (percent > 100) @compileError("Are you nut?");
+    //           return price - (price * percent / 100);
     //      }
 }
