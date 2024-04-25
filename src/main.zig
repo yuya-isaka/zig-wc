@@ -7,14 +7,14 @@ pub fn main() anyerror!void {
     // const stdout = std.io.getStdOut().writer();
     // _ = try stdout.writeAll("Hello");
 
-    // const s = [5:0]u8{ 'h', 'e', 0, 'l', 'o' };
-    // std.debug.print("{s}\n", .{s});
-    // std.debug.print("{d}\n", .{s.len});
+    const s = [5:0]u8{ 'h', 'e', 0, 'l', 'o' };
+    std.debug.print("{s}\n", .{s});
+    std.debug.print("{d}\n", .{s.len});
     // const s = [_:0]u8{ 'h', 'e', 0, 'l', 'o' };
     // const s = "Hello";
-    // std.debug.print("{}\n", .{@TypeOf(s)});
-    // std.debug.print("{s}\n", .{s});
-    // std.debug.print("{d}\n", .{s.len});
+    std.debug.print("{}\n", .{@TypeOf(s)});
+    std.debug.print("{s}\n", .{s});
+    std.debug.print("{d}\n", .{s.len});
 
     // std.debug.print("{d}\n", .{@sizeOf(@TypeOf(s))});
     // std.debug.print("{d}\n", .{@sizeOf(@TypeOf(s.*))});
